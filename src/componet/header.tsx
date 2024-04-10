@@ -15,9 +15,6 @@ import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import {
-  MemoryRouter,
-  Route,
-  Routes,
   Link,
   matchPath,
   useLocation,
@@ -45,12 +42,11 @@ export default function Header(props: Props) {
       </Typography>
       <Divider />
       <List>
-        dvdv
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton
               key={item}
-              to={`/${item}`}
+              to={`/${item}` == "/Grade-Point" ? "" : `/${item}`}
               component={Link}
             >
               <ListItemText primary={item} />
@@ -63,6 +59,7 @@ export default function Header(props: Props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+  
   function useRouteMatch(patterns: readonly string[]) {
     const { pathname } = useLocation();
 
@@ -74,7 +71,7 @@ export default function Header(props: Props) {
       }
     }
 
-    return null;
+    return { pattern: { path: "/Grade-Point" }, params: {} };
   }
   function MyTabs() {
     const routeMatch = useRouteMatch(["/Grade-Point", "/GPA", "/GPAX"]);
@@ -96,7 +93,7 @@ export default function Header(props: Props) {
           style: {
             backgroundColor: "var(--dark-color)",
             height: "4px",
-            borderRadius:"5px"
+            borderRadius: "5px",
           },
         }}
       >
@@ -104,7 +101,7 @@ export default function Header(props: Props) {
           <Tab
             label={item}
             value={`/${item}`}
-            to={`/${item}`}
+            to={`/${item}` == "/Grade-Point" ? "" : `/${item}`}
             component={Link}
             // href={`/${item}`}/
             sx={{
