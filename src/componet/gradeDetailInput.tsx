@@ -8,26 +8,14 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-
 interface GradeDetailInputProps {
   id: string; // Add id prop
   onDelete: (id: string) => void; // Update onDelete to accept id
+  getCreditGraded: (credit: Number, graded: Number, id: string) => void;
 }
-
-interface GradeDetail {
-  code: string;
-  name: string;
-  credit: string;
-  suggested?: boolean;
-}
-
-const courses: readonly GradeDetail[] = [
-  { code: "", name: "อื่นๆ", credit: "0" },
-  { code: "AD", name: "Andorra", credit: "4" },
-];
 
 export default function GradeDetailInput(props: GradeDetailInputProps) {
-  const [credit, setCredit] = React.useState<string | null>(null);
+  const [credit, setCredit] = React.useState<Number>(0);
   const [graded, setGraded] = React.useState<string | null>(null);
   const [name, setName] = React.useState<string | null>(null);
 
@@ -36,25 +24,53 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
     value: GradeDetail | null
   ) => {
     if (value) {
-      setCredit(value.credit);
+      setCredit(Number(value.credit));
       setName(value.name);
     }
   };
 
-  const handleCreditChange = (event: SelectChangeEvent) => {
-    setCredit(event.target.value as string);
-  };
+   const handleCreditChange = (event: SelectChangeEvent) => {
+     setCredit(Number(event.target.value));
+   };
 
-  const handleGradedChange = (event: SelectChangeEvent) => {
-    setGraded(event.target.value as string);
-  };
+   const handleGradedChange = (event: SelectChangeEvent) => {
+     setGraded(event.target.value as string);
+   };
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
 
   const handleDelete = () => {
-    props.onDelete(props.id); 
+    props.onDelete(props.id);
   };
+  const mapGradedToNumber = (graded: string | null): number => {
+    switch (graded) {
+      case "F":
+        return 0;
+      case "D":
+        return 1;
+      case "D+":
+        return 1.5;
+      case "C":
+        return 2;
+      case "C+":
+        return 2.5;
+      case "B":
+        return 3;
+      case "B+":
+        return 3.5;
+      case "S":
+        return 4;
+      case "A":
+        return 4;
+      default:
+        return 0;
+    }
+  };
+  React.useEffect(() => {
+    const numericValue = mapGradedToNumber(graded);
+    props.getCreditGraded(credit, numericValue, props.id);
+  }, [credit, graded]);
 
   return (
     <Box
@@ -86,7 +102,7 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="เลือกรายวิชา"
+            label="เลือกรหัสรายวิชา"
             inputProps={{
               ...params.inputProps,
               autoComplete: "new-password",
@@ -116,12 +132,12 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
           id="demo-simple-select-autowidth"
           autoWidth
           label="หน่วยกิต"
-          value={credit || ""}
+          value={String(credit || 0)}
           onChange={handleCreditChange}
         >
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
+          {[0,1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
             <MenuItem key={value} value={value}>
-              {value}
+              {value==0? "":value}
             </MenuItem>
           ))}
         </Select>
@@ -141,7 +157,7 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
           value={graded || ""}
           onChange={handleGradedChange}
         >
-          {["F", "D", "D+", "C", "C+", "B", "B+", "S", "A"].map((value) => (
+          {["F", "D", "D+", "C", "C+", "B", "B+", "A", "S"].map((value) => (
             <MenuItem key={value} value={value}>
               {value}
             </MenuItem>
@@ -149,9 +165,67 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
         </Select>
       </FormControl>
       <DeleteForeverIcon
-        sx={{ width: 20 }}
+        sx={{ width: 20, cursor: "pointer" }}
         onClick={handleDelete}
       ></DeleteForeverIcon>
     </Box>
   );
 }
+
+interface GradeDetail {
+  code: string;
+  name: string;
+  credit: string;
+  suggested?: boolean;
+}
+
+const courses: readonly GradeDetail[] = [
+  { code: "", name: "อื่นๆ", credit: "0" },
+  { code: "ENG25 1010-1", name: "ENGINEERING GRAPHICS I", credit: "2" },
+  { code: "IST20 1001-1", name: "DIGITAL LITERACY", credit: "2" },
+  {
+    code: "IST20 1002-1",
+    name: "USE OF APPLICATION PROGRAMS FOR LEARNING",
+    credit: "1",
+  },
+  { code: "SCI03 1001-1", name: "CALCULUS I", credit: "4" },
+  { code: "SCI05 1001-1", name: "PHYSICS I", credit: "4" },
+  { code: "SCI05 1191-1", name: "PHYSICS LABORATORY I", credit: "1" },
+
+  {
+    code: "ENG20 1010-1",
+    name: "INTRODUCTION TO ENGINEERING PROFESSION",
+    credit: "1",
+  },
+  { code: "ENG23 1001-1", name: "COMPUTER PROGRAMMING I", credit: "2" },
+  {
+    code: "IST20 1003-1",
+    name: "LIFE SKILLS",
+    credit: "3",
+  },
+  { code: "IST30 1101-1", name: "ENGLISH FOR COMMUNICATION 1", credit: "4" },
+  { code: "SCI03 1002-1", name: "CALCULUS II", credit: "1" },
+  { code: "SCI05 1002-1", name: "PHYSICS II", credit: "4" },
+  { code: "SCI05 1192-1", name: "PHYSICS LABORATORY II", credit: "1" },
+
+  {
+    code: "ENG31 1001-1",
+    name: "ENGINEERING MATERIALS",
+    credit: "4",
+  },
+  {
+    code: "IST20 1004-1",
+    name: "	CITIZENSHIP AND GLOBAL CITIZENS",
+    credit: "3",
+  },
+  { code: "IST30 1102-1", name: "ENGLISH FOR COMMUNICATION 2", credit: "3" },
+  { code: "SCI02 1111-1", name: "FUNDAMENTAL CHEMISTRY I", credit: "4" },
+  {
+    code: "SCI02 1112-1",
+    name: "FUNDAMENTAL CHEMISTRY LABORATORY I",
+    credit: "1",
+  },
+  { code: "SCI03 1005-1", name: "	CALCULUS III", credit: "4" },
+
+  { code: "", name: "อื่นๆ", credit: "0" },
+];
