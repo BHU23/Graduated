@@ -13,9 +13,16 @@ import GPAX from "./pages/GPAX";
 export default function App() {
   return (
     <BrowserRouter>
-      <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Header></Header>
-        <Box component="main" sx={{ p: 3 }}>
+        <Box component="main" sx={{ p: 3, width: "90%" }}>
           <Toolbar />
           <Routes>
             <Route path="/" element={<GradePoint />} />
