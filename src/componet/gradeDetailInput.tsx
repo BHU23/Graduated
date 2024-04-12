@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -12,12 +12,28 @@ interface GradeDetailInputProps {
   id: string; // Add id prop
   onDelete: (id: string) => void; // Update onDelete to accept id
   getCreditGraded: (credit: Number, graded: Number, id: string) => void;
+  subjects: String;
 }
 
 export default function GradeDetailInput(props: GradeDetailInputProps) {
   const [credit, setCredit] = React.useState<Number>(0);
   const [graded, setGraded] = React.useState<string | null>(null);
   const [name, setName] = React.useState<string | null>(null);
+  const [selectedSubject, setSelectedSubject] = useState<String | null>(null);
+
+  useEffect(() => {
+    if (props.subjects) {
+      setSelectedSubject(props.subjects);
+      const setAuto = props.subjects
+        ? courses.find((course) => course.code === props.subjects)
+        : null;
+      if (setAuto) {
+        setCredit(Number(setAuto.credit));
+        setName(setAuto.name);
+      }
+    }
+  }, [props.subjects]);
+
 
   const handleCourseChange = (
     event: React.ChangeEvent<{}>,
@@ -26,16 +42,17 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
     if (value) {
       setCredit(Number(value.credit));
       setName(value.name);
+      setSelectedSubject(value.code);
     }
   };
 
-   const handleCreditChange = (event: SelectChangeEvent) => {
-     setCredit(Number(event.target.value));
-   };
+  const handleCreditChange = (event: SelectChangeEvent) => {
+    setCredit(Number(event.target.value));
+  };
 
-   const handleGradedChange = (event: SelectChangeEvent) => {
-     setGraded(event.target.value as string);
-   };
+  const handleGradedChange = (event: SelectChangeEvent) => {
+    setGraded(event.target.value as string);
+  };
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
@@ -87,6 +104,11 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
         sx={{ width: 200 }}
         onChange={handleCourseChange}
         options={courses}
+        value={
+          selectedSubject
+            ? courses.find((course) => course.code === selectedSubject)
+            : null
+        }
         autoHighlight
         getOptionLabel={(option) => option.code}
         renderOption={(props, option) => (
@@ -135,9 +157,9 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
           value={String(credit || 0)}
           onChange={handleCreditChange}
         >
-          {[0,1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
             <MenuItem key={value} value={value}>
-              {value==0? "":value}
+              {value == 0 ? "" : value}
             </MenuItem>
           ))}
         </Select>
