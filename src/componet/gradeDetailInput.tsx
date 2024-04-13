@@ -225,8 +225,8 @@ const courses: readonly GradeDetail[] = [
     name: "LIFE SKILLS",
     credit: "3",
   },
-  { code: "IST30 1101-1", name: "ENGLISH FOR COMMUNICATION 1", credit: "4" },
-  { code: "SCI03 1002-1", name: "CALCULUS II", credit: "1" },
+  { code: "IST30 1101-1", name: "ENGLISH FOR COMMUNICATION 1", credit: "3" },
+  { code: "SCI03 1002-1", name: "CALCULUS II", credit: "4" },
   { code: "SCI05 1002-1", name: "PHYSICS II", credit: "4" },
   { code: "SCI05 1192-1", name: "PHYSICS LABORATORY II", credit: "1" },
 
@@ -236,8 +236,8 @@ const courses: readonly GradeDetail[] = [
     credit: "4",
   },
   {
-    code: "IST20 1004-1",
-    name: "	CITIZENSHIP AND GLOBAL CITIZENS",
+    code: "IST20 1007-1",
+    name: "CITIZENSHIP AND GLOBAL CITIZENS",
     credit: "3",
   },
   { code: "IST30 1102-1", name: "ENGLISH FOR COMMUNICATION 2", credit: "3" },
@@ -247,7 +247,7 @@ const courses: readonly GradeDetail[] = [
     name: "FUNDAMENTAL CHEMISTRY LABORATORY I",
     credit: "1",
   },
-  { code: "SCI03 1005-1", name: "	CALCULUS III", credit: "4" },
+  { code: "SCI03 1005-1", name: "CALCULUS III", credit: "4" },
 
   { code: "", name: "อื่นๆ", credit: "0" },
 ];

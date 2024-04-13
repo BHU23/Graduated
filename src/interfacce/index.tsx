@@ -1,3 +1,5 @@
+
+
 export interface GradeDetail {
   id: string;
   component: JSX.Element;

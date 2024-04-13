@@ -135,12 +135,12 @@ export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
           "& > :not(style)": { m: 1 },
         }}
       >
-        <Box sx={{ width: 400 }}>
+        <Box sx={{ width: 550 }}>
           <h3>ภาคการเรียนที่ {props.term}</h3>
         </Box>
-        <Box sx={{ width: 100 }}></Box>
-        <Box sx={{ width: 100 }}></Box>
-        <Box sx={{ width: 100 }}></Box>
+        <Box sx={{ width: 50 }}></Box>
+        <Box sx={{ width: 50 }}></Box>
+        <Box sx={{ width: 50 }}></Box>
         <Box sx={{ width: 20 }}></Box>
       </Box>
       {gradeDetails.map((detail) => (
