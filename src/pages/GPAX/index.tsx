@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { GradeMultiCourse } from "../../interfacce";
 import { calculateGPAX } from "../../componet/calaculateFuntion";
 import GradeMultiTerms from "../../componet/gradeMultuTarm";
+import { Subjects } from "../GradePoint/dataGropSubject";
 interface GPAXProps {}
 
 export default function GPAX(props: GPAXProps) {
@@ -54,7 +55,7 @@ export default function GPAX(props: GPAXProps) {
         }
         addTermButtom={1}
         term={1}
-        subjects={[]}
+        subjects={Subjects[8]}
         gpStatus={0}
       ></GradeMultiTerms>
       <Box

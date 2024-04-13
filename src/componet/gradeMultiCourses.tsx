@@ -6,7 +6,8 @@ import Button from "@mui/material/Button"; // Import Button component
 import { v4 as uuidv4 } from "uuid";
 import { GradeDetail } from "../interfacce";
 import { calculateGPA } from "./calaculateFuntion";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 interface GradeMultiCoursesProps {
   id: string;
   term: string;
@@ -115,7 +116,8 @@ export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
       return prevDetails;
     });
   };
-
+ const theme = useTheme();
+ const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const sumValue = calculateGPA(gradeDetails);
   React.useEffect(() => {
     // console.log(sumValue);
@@ -165,7 +167,7 @@ export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
         <Button
           onClick={addGradeDetail}
           sx={{
-            width: 200,
+            width: isSmallScreen ? 300 : 200,
             background: "#000",
             color: "#fff",
             ":hover": { color: "var(--dark-color)" },
@@ -175,13 +177,13 @@ export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
         </Button>
         {props.gpStatus == 0 ? (
           <>
-            <Box sx={{ width: 300 }}></Box>
+            <Box sx={{ width: isSmallScreen ? 200 : 300 }}></Box>
             <Box sx={{ width: 100, textAlign: "center" }}>
               <h3>GPA</h3>
             </Box>
             <Box
               sx={{
-                width: 100,
+                width: isSmallScreen ? 200 : 100,
                 textAlign: "center",
                 border: "1px solid var(--primary-color)",
                 borderRadius: "5px",
@@ -192,13 +194,13 @@ export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
           </>
         ) : (
           <>
-            <Box sx={{ width: 200 }}></Box>
+            <Box sx={{ width: isSmallScreen ? 0 : 200 }}></Box>
             <Box sx={{ width: 200, textAlign: "center" }}>
               <h3>GradePoint : ภาค</h3>
             </Box>
             <Box
               sx={{
-                width: 100,
+                width: isSmallScreen ? 200 : 100,
                 textAlign: "center",
                 border: "1px solid var(--primary-color)",
                 borderRadius: "5px",
