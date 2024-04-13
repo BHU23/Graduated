@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button"; // Import Button component
@@ -16,31 +16,33 @@ interface GradeMultiTermsProps {
 
 export default function GradeMultiTerms(props: GradeMultiTermsProps) {
   const initialGradeMultiCourses: GradeMultiCourse[] = [];
-
-  // Initialize gradeMultiCourses according to the number of terms
-  for (let i = 1; i <= Number(props.term); i++) {
-    const id = uuidv4();
-    console.log(props.subjects[i - 1]);
-    initialGradeMultiCourses.push({
-      id: id,
-      gpa: 0,
-      gradePoint: 0,
-      credit: 0,
-      component: (
-        <GradeMultiCourses
-          id={id}
-          key={id}
-          gpStatus={props.gpStatus}
-          term={i.toString()} // Set the term value as a string
-          onDelete={(id) => deleteGradeMultiCourse(id)}
-          getGPA_GradePoint={(gpa, gradePoint, credit, id) =>
-            setGPA_GradePoint(gpa, gradePoint, credit, id)
-          }
-          subjects={props.subjects[i - 1]}
-        />
-      ),
-    });
-  }
+ 
+  useEffect(() => {
+    const initialGradeMultiCourses: GradeMultiCourse[] = [];
+    for (let i = 1; i <= Number(props.term); i++) {
+      const id = uuidv4();
+      initialGradeMultiCourses.push({
+        id: id,
+        gpa: 0,
+        gradePoint: 0,
+        credit: 0,
+        component: (
+          <GradeMultiCourses
+            id={id}
+            key={id}
+            gpStatus={props.gpStatus}
+            term={i.toString()}
+            onDelete={(id) => deleteGradeMultiCourse(id)}
+            getGPA_GradePoint={(gpa, gradePoint, credit, id) =>
+              setGPA_GradePoint(gpa, gradePoint, credit, id)
+            }
+            subjects={props.subjects[i - 1]}
+          />
+        ),
+      });
+    }
+    setGradeMultiCourses(initialGradeMultiCourses);
+  }, [props.term, props.subjects]);
 
   const [gradeMultiCourses, setGradeMultiCourses] = useState(
     initialGradeMultiCourses

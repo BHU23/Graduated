@@ -24,13 +24,10 @@ interface GradeMultiCoursesProps {
 export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
   const [gradeDetails, setGradeDetails] = useState<GradeDetail[]>([]);
 
-  // Populate gradeDetails state based on subjects
   useEffect(() => {
     if (props.subjects) {
       const initialGradeDetails: GradeDetail[] = props.subjects.map(
         (code) => {
-          console.log(code);
-          console.log("code");
           const id = uuidv4();
           return {
             id: id,
@@ -44,7 +41,7 @@ export default function GradeMultiCourses(props: GradeMultiCoursesProps) {
                 getCreditGraded={(credit, graded, id) =>
                   setCredittGrade(credit, graded, id)
                 }
-                subjects={code} // Pass the subjects array to GradeDetailInput
+                subjects={code} 
               />
             ),
           };
