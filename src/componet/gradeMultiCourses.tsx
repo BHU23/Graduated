@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GradeDetailInput from "./gradeDetailInput";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button"; // Import Button component
 import { v4 as uuidv4 } from "uuid";
 import { GradeDetail } from "../interfacce";

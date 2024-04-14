@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/joy/Table";
 interface GradePointHisProps {
   gradePoint: number;
