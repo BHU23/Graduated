@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./componet/header";
 import Footer from "./componet/footer";
 import { Box, Toolbar } from "@mui/material";

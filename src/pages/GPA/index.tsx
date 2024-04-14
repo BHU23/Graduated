@@ -3,13 +3,6 @@ import Typography from "@mui/material/Typography";
 import GradeMultiCourses from "../../componet/gradeMultiCourses";
 
 export default function GPA() {
-  const setGPA_GradePoint = (
-    gpa: Number,
-    gradePoiont: Number,
-    credit: Number,
-    id: string
-  ) => {};
-  const deleteGradeMultiGPA = (id: string) => {};
   return (
     <Box
       sx={{
@@ -51,10 +44,8 @@ export default function GPA() {
         id={"1"}
         gpStatus={0}
         key={1}
-        onDelete={(id) => deleteGradeMultiGPA(id)}
-        getGPA_GradePoint={(gpa, gradePoiont, credit, id) =>
-          setGPA_GradePoint(gpa, gradePoiont, credit, id)
-        }
+        onDelete={() => {}}
+        getGPA_GradePoint={() => {}}
         subjects={[""]}
       />
     </Box>

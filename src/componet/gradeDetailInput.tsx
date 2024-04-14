@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -42,7 +41,7 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
     event: React.ChangeEvent<{}>,
     value: GradeDetail | null
   ) => {
-    if (value) {
+    if (value && event) {
       setCredit(Number(value.credit));
       setName(value.name);
       setSelectedSubject(value.code);
@@ -87,8 +86,8 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
         return 0;
     }
   };
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   React.useEffect(() => {
     const numericValue = mapGradedToNumber(graded);
     props.getCreditGraded(credit, numericValue, props.id);
