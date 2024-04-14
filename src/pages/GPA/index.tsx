@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import GradeDetailInput from "../../componet/gradeDetailInput";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button"; // Import Button component
-import { v4 as uuidv4 } from "uuid";
 import GradeMultiCourses from "../../componet/gradeMultiCourses";
 
-interface GPAProps {}
-
-export default function GPA(props: GPAProps) {
+export default function GPA() {
   const setGPA_GradePoint = (
     gpa: Number,
     gradePoiont: Number,

@@ -5,9 +5,8 @@ import { GradeMultiCourse } from "../../interfacce";
 import { calculateGPAX } from "../../componet/calaculateFuntion";
 import GradeMultiTerms from "../../componet/gradeMultuTarm";
 import { Subjects } from "../GradePoint/dataGropSubject";
-interface GPAXProps {}
 
-export default function GPAX(props: GPAXProps) {
+export default function GPAX() {
   const [gradeMultiCourses, setGradeMultiCourses] =
     useState<GradeMultiCourse[]>();
   // console.log(gradeMultiCourses);

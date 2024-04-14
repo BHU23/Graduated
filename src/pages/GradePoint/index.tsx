@@ -8,9 +8,8 @@ import TableGradePointHis from "./gradePiontHis";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Subjects } from "./dataGropSubject";
-interface GradePointProps {}
 
-export default function GradePoint(props: GradePointProps) {
+export default function GradePoint() {
   const [gradeMultiCourses, setGradeMultiCourses] =
     useState<GradeMultiCourse[]>();
 
