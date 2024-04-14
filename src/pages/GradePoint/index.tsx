@@ -85,8 +85,8 @@ export default function GradePoint(props: GradePointProps) {
         <Box
           sx={{
             width: 780,
-            marginLeft:0,
-            "& > :not(style)": { mr: 2,mb: 2 },
+            marginLeft: 0,
+            "& > :not(style)": { mr: 2, mb: 2 },
           }}
         >
           {["a", "b", "c", "d", "e", "f", "x1", "x2"].map((label, index) => (
@@ -108,7 +108,7 @@ export default function GradePoint(props: GradePointProps) {
                   backgroundColor:
                     gropEdIndex === index
                       ? "var(--primary-color)"
-                      : "var(--primary-color)",
+                      : "var(--gray-color)",
                   border: "none",
                 },
                 "&:active": {
