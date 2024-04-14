@@ -443,14 +443,12 @@ export default function GradeDetailInput(props: GradeDetailInputProps) {
           ></DeleteForeverIcon>
         </>
       ) : (
-        <Box
-          
-        >
+        <Box>
           <Grid container spacing={2}>
             {/* First Row */}
             <Grid item xs={12} sm={6}>
               <Autocomplete
-                id="country-select-demo"
+                id="course-select-demo"
                 sx={{ width: "100%" }}
                 onChange={handleCourseChange}
                 options={courses}
