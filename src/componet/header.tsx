@@ -38,7 +38,7 @@ export default function Header(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Graduated
+        Graduated Go
       </Typography>
       <Divider />
       <List>
@@ -133,7 +133,7 @@ export default function Header(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Graduated
+            Graduated Go
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <MyTabs />
@@ -147,7 +147,7 @@ export default function Header(props: Props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, 
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
