@@ -87,7 +87,7 @@ export default function GradePoint() {
             "& > :not(style)": { mr: 2, mb: 2 },
           }}
         >
-          {["a", "b", "c", "d", "e", "f", "x1", "x2"].map((label, index) => (
+          {["a", "b", "c", "d", "e", "f", "x1", "x2","อื่นๆ"].map((label, index) => (
             <Button
               key={index}
               onClick={() => handleButtonClick(index)}
