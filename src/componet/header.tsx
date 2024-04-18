@@ -14,11 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import {
-  Link,
-  matchPath,
-  useLocation,
-} from "react-router-dom";
+import { Link, matchPath, useLocation } from "react-router-dom";
 
 interface Props {
   window?: () => Window;
@@ -59,7 +55,7 @@ export default function Header(props: Props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-  
+
   function useRouteMatch(patterns: readonly string[]) {
     const { pathname } = useLocation();
 
@@ -73,6 +69,7 @@ export default function Header(props: Props) {
 
     return { pattern: { path: "/Grade-Point" }, params: {} };
   }
+
   function MyTabs() {
     const routeMatch = useRouteMatch(["/Grade-Point", "/GPA", "/GPAX"]);
     const currentTab = routeMatch?.pattern?.path;
@@ -88,6 +85,8 @@ export default function Header(props: Props) {
         sx={{
           color: "#fff",
           ":hover": { color: "var(--dark-color)" },
+          display: "flex",
+          justifyContent: "flex-end",
         }}
         TabIndicatorProps={{
           style: {
@@ -95,6 +94,13 @@ export default function Header(props: Props) {
             height: "4px",
             borderRadius: "5px",
           },
+        }}
+        ScrollButtonComponent={() => {
+          return (
+            <a style={
+              { height: "0", width:0 }}>
+            </a>
+          );
         }}
       >
         {navItems.map((item) => (
@@ -107,6 +113,9 @@ export default function Header(props: Props) {
               color: "#fff",
               ":hover": { color: "var(--dark-color)" },
               height: "64px",
+              position:"relative", // add for padding rigth
+              top: 0,
+              right:"-24px"
             }}
           ></Tab>
         ))}
