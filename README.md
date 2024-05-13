@@ -5,8 +5,8 @@ web Graduted Go เว็บคำนวนเกรด เกรดพ้อย
 
 You can visit web on:
 
-- [@vitejs/plugin-react]https://graduatedgo.onrender.com/
-- 
+- https://graduatedgo.onrender.com/
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
