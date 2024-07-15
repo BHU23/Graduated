@@ -26,6 +26,8 @@ export default function App() {
             <Route path="/" element={<GradePoint />} />
             <Route path="/GPA" element={<GPA />} />
             <Route path="/GPAX" element={<GPAX />} />
+            <Route path="/gpa" element={<GPA />} />
+            <Route path="/gpax" element={<GPAX />} />
           </Routes>
         </Box>
       </Box>
