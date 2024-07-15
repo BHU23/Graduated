@@ -1,3 +1,12 @@
+# web Graduted Go เว็บคำนวนเกรด เกรดพ้อย
+- สามารถเลือกแผนการเรียน A, B, C, D, E, X1, X2
+- เปรียบเทียบเกรดพ้อยที่คาดว่าจะได้ กลับสถิติเก่า (พ.ศ. 2562-2565)
+web Graduted Go เว็บคำนวนเกรด เกรดพ้อย เว็บนี้ไม่มีการแสวงหาผลประโยชน์ใด ๆ ข้อมูลทั้งหมดได้มาจากการสืบค้นโดยผู้จัดทำเองหากผิดพลาดประการใดจึงขออภัยไว้ ณ ที่นี้
+
+You can visit web on:
+
+- https://graduatedgo.onrender.com/
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
